@@ -68,3 +68,104 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+# =============================================================================
+# ARITHMETIC OPERATION FUNCTIONS
+# =============================================================================
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        return "Cannot divide by zero."
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        return "Cannot perform modulus by zero."
+    return a % b
+
+
+def power(a, b):
+    return a ** b
+
+
+def display_menu():
+    print("\n" + "=" * 28)
+    print("     SIMPLE CALCULATOR     ")
+    print("=" * 28)
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Modulus")
+    print("6. Exponentiation")
+    print("7. Quit")
+
+
+def get_numbers():
+    while True:
+        try:
+            num1 = float(input("Enter first number : "))
+            num2 = float(input("Enter second number: "))
+            return num1, num2
+        except ValueError:
+            print("Invalid input! Please enter valid numbers.\n")
+
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Select an operation (1-7): ").strip()
+
+        if choice == "7":
+            print("\nGoodbye!")
+            break
+
+        if choice in ["1", "2", "3", "4", "5", "6"]:
+            num1, num2 = get_numbers()
+
+            try:
+                if choice == "1":
+                    result = add(num1, num2)
+                    print(f"Result: {num1:g} + {num2:g} = {result:g}")
+
+                elif choice == "2":
+                    result = subtract(num1, num2)
+                    print(f"Result: {num1:g} - {num2:g} = {result:g}")
+
+                elif choice == "3":
+                    result = multiply(num1, num2)
+                    print(f"Result: {num1:g} * {num2:g} = {result:g}")
+
+                elif choice == "4":
+                    result = divide(num1, num2)
+                    print(f"Result: {num1:g} / {num2:g} = {result:g}")
+
+                elif choice == "5":
+                    result = modulus(num1, num2)
+                    print(f"Result: {num1:g} % {num2:g} = {result:g}")
+
+                elif choice == "6":
+                    result = power(num1, num2)
+                    print(f"Result: {num1:g} ** {num2:g} = {result:g}")
+
+            except ZeroDivisionError as err:
+                print(f"Error: {err}")
+
+        else:
+            print("Invalid choice! Please select an option between 1 and 7.")
+
+
+if __name__ == "__main__":
+    main()
